@@ -1,0 +1,49 @@
+CREATE DATABASE Employee1
+
+Use Employee1
+
+CREATE TABLE Employee1 ( 
+	EMPNO INT,
+	ENAME VARCHAR(100), 
+    JOB VARCHAR(50), 
+    MGR INT,
+	SAL DECIMAL(10, 2)
+);
+
+
+ALTER TABLE Employee1
+ADD COMMISSION DECIMAL(10, 2) CHECK (COMMISSION >= 0);
+
+
+
+
+INSERT INTO Employee1 (EMPNO, ENAME, JOB, MGR, SAL, COMMISSION) VALUES 
+(101, 'John Doe', 'Manager', NULL, 50000.00, 1500.00),
+(102, 'Jane Smith', 'Developer', 101, 45000.00, 1000.00),
+(103, 'Eric Johnson', 'Analyst', 101, 40000.00, 800.00),
+(104, 'Mary Jane', 'Designer', 103, 35000.00, 500.00),
+(105, 'Alice Brown', 'Tester', 104, 30000.00, 300.00);
+
+SELECT * FROM Employee1;
+
+
+
+	
+ SET SQL_SAFE_UPDATES = 0;   
+UPDATE Employee1
+SET JOB = 'Quality Analyst'
+WHERE EMPNO = 105;
+
+SELECT * FROM Employee1;
+
+
+
+ALTER TABLE Employee1
+RENAME COLUMN MGR TO MANAGER_ID;
+
+SELECT * FROM Employee1;
+
+DELETE FROM Employee1 
+WHERE EMPNO = 105;
+
+SELECT * FROM Employee1;
