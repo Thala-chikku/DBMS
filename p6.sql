@@ -75,3 +75,75 @@ DELIMITER ;
 CALL merge_rollcall_data();
 
 SELECT * FROM O_RollCall;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===================  program 07 =======================
+
+
+
+use bookDB
+
+db.ProgrammingBooks.insertMany([
+  {
+    title: "Clean Code: A Handbook of Agile Software Craftsmanship",
+    author: "Robert C. Martin",
+    category: "Software Development",
+    year: 2008
+  })]
+
+	
+db.programmingBooks.insertone([])
+	
+	
+db.ProgrammingBooks.find(). pretty ()
+
+	
+db.ProgrammingBooks.find({year: { $gt: 2000 } }). pretty ()
+
+	
+db.ProgrammingBooks.updateOne( 
+{ title: "Clean Code: A Handbook of Agile Software Craftsmanship" }, 
+{ $set: { author: "Robert C. Martin (Uncle Bob)" } } )
+	
+db.ProgrammingBooks.find({ year: { $eq: 2008 } }).pretty()
+
+db.ProgrammingBooks.updateMany( { year: { $lt: 2010 } },
+ { $set: { category: "Classic Programming Books" } } )
+	
+db.ProgrammingBooks.find({ year: { $lt: 2010 } }).pretty()
+
+
+	
+db.ProgrammingBooks.deleteOne({ title: "JavaScript: The Good Parts" })
+	
+db.ProgrammingBooks.deleteMany({ year: { $lt: 1995 } })
+	
+db.ProgrammingBooks.deleteMany({})
+	
+db.ProgrammingBooks.find().pretty()
